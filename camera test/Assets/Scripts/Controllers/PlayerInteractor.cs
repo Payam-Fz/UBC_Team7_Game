@@ -34,7 +34,7 @@ public class PlayerInteractor : MonoBehaviour
             //Color interactiveColor = interactiveCollider.gameObject.GetComponent<SpriteRenderer>().color;
             interactiveCollider.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
             //interactText.text = "Press [E] to interact";
-            StartCoroutine(PlayText("Press [E] to interact", interactText.text));
+            interactText.text = "Press [E] to interact";
             Debug.Log("Interactive Object Detected!");
         }
     }
@@ -50,7 +50,7 @@ public class PlayerInteractor : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayText(string text, string textHolder)
+    /*private IEnumerator PlayText(string text, string textHolder)
     {
         var charText = text.ToCharArray();
         foreach (char c in charText)
@@ -59,7 +59,7 @@ public class PlayerInteractor : MonoBehaviour
         }
             yield return new WaitForSeconds(0.01f);
         textHolder = text;
-    }
+    }*/
 
     /*private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -31,8 +31,9 @@ public class PlayerInteractor : MonoBehaviour
         {
             interactiveCollider = collision;
             canInteract = true;
+            //interactiveCollider.gameObject.GetComponent<SpriteRenderer>().material.shader = AllIn1Shader.Set
             //Color interactiveColor = interactiveCollider.gameObject.GetComponent<SpriteRenderer>().color;
-            interactiveCollider.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+            //interactiveCollider.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
             //interactText.text = "Press [E] to interact";
             interactText.text = "Press [E] to interact";
             Debug.Log("Interactive Object Detected!");

@@ -31,6 +31,7 @@ public class PlayerInteractor : MonoBehaviour
         {
             interactiveCollider = collision;
             canInteract = true;
+            interactiveCollider.GetComponent<Renderer>().material.SetFloat("_OutlineAlpha", 0.8f);
             //interactiveCollider.gameObject.GetComponent<SpriteRenderer>().material.shader = AllIn1Shader.Set
             //Color interactiveColor = interactiveCollider.gameObject.GetComponent<SpriteRenderer>().color;
             //interactiveCollider.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
@@ -45,7 +46,8 @@ public class PlayerInteractor : MonoBehaviour
         {
             interactiveCollider = collision;
             canInteract = false;
-            interactiveCollider.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            interactiveCollider.GetComponent<Renderer>().material.SetFloat("_OutlineAlpha", 0);
+            //interactiveCollider.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
             interactText.text = "";
             Debug.Log("Leaving Interactive Object!");
         }

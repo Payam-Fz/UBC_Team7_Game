@@ -31,11 +31,14 @@ public class PlayerInteractor : MonoBehaviour
         {
             interactiveCollider = collision;
             canInteract = true;
-            interactiveCollider.GetComponent<Renderer>().material.SetFloat("_OutlineAlpha", 0.8f);
-            //interactiveCollider.gameObject.GetComponent<SpriteRenderer>().material.shader = AllIn1Shader.Set
-            //Color interactiveColor = interactiveCollider.gameObject.GetComponent<SpriteRenderer>().color;
-            //interactiveCollider.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
-            //interactText.text = "Press [E] to interact";
+            if(collision.gameObject.GetComponent<AllIn1Shader>() != null)
+            {
+                interactiveCollider.GetComponent<Renderer>().material.SetFloat("_OutlineAlpha", 0.8f);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<IInteractive>().ManualHighlight();
+            }
             interactText.text = "Press [E] to interact";
             Debug.Log("Interactive Object Detected!");
         }
@@ -46,12 +49,25 @@ public class PlayerInteractor : MonoBehaviour
         {
             interactiveCollider = collision;
             canInteract = false;
-            interactiveCollider.GetComponent<Renderer>().material.SetFloat("_OutlineAlpha", 0);
+            if (collision.gameObject.GetComponent<AllIn1Shader>() != null)
+            {
+                interactiveCollider.GetComponent<Renderer>().material.SetFloat("_OutlineAlpha", 0f);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<IInteractive>().ManualHighlight();
+            }
             //interactiveCollider.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
             interactText.text = "";
             Debug.Log("Leaving Interactive Object!");
         }
     }
+
+            //interactiveCollider.gameObject.GetComponent<SpriteRenderer>().material.shader = AllIn1Shader.Set
+            //Color interactiveColor = interactiveCollider.gameObject.GetComponent<SpriteRenderer>().color;
+            //interactiveCollider.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+            //interactText.text = "Press [E] to interact";
+
 
     /*private IEnumerator PlayText(string text, string textHolder)
     {

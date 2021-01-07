@@ -8,6 +8,7 @@ public class TV : MonoBehaviour, IInteractive
     [SerializeField] Sprite tvOn;
     [SerializeField] Sprite tvOff;
 
+    
     void Start()
     {
         tvSprite = GetComponent<SpriteRenderer>();
@@ -25,5 +26,8 @@ public class TV : MonoBehaviour, IInteractive
         }
     }
 
-
+    public void ManualHighlight()
+    {
+        throw new System.NotImplementedException();
+    }
 }

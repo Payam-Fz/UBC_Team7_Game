@@ -8,6 +8,7 @@ public class ClockoutMachine : MonoBehaviour, IInteractive
     [SerializeField] Sprite clockoutOn;
     [SerializeField] Sprite clockoutOff;
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +27,8 @@ public class ClockoutMachine : MonoBehaviour, IInteractive
         }
     }
 
-
+    public void ManualHighlight()
+    {
+        throw new System.NotImplementedException();
+    }
 }

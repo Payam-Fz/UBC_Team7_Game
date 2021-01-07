@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class CoffeeMachine : MonoBehaviour, IInteractive
 {
+    
     public void Interact()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void ManualHighlight()
     {
         throw new System.NotImplementedException();
     }

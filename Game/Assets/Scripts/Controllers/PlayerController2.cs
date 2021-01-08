@@ -54,7 +54,7 @@ public class PlayerController2 : MonoBehaviour
     void Update()
     {
         var horizontal = Input.GetAxisRaw("Horizontal");
-        transform.position += new Vector3()
+        transform.position += new Vector3();
         
         playerInput.x = 1;
             //Input.GetAxisRaw("Horizontal");

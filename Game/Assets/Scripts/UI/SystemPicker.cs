@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SystemPicker : MonoBehaviour
 {
-    [SerializeField] GameObject[] bodySystems = new GameObject[6];
+    [SerializeField] public GameObject[] bodySystems = new GameObject[6];
     List<Image> systemDiagrams = new List<Image>();
     
     
@@ -33,7 +33,7 @@ public class SystemPicker : MonoBehaviour
             {
                 diagram.color = new Color(1, 1, 1, 0.2f);
                 diagram.GetComponentInParent<Canvas>().sortingOrder = 5;
-                diagram.transform.Find("Button").GetComponent<Image>().color = new Color(1, 1, 1, 0.6f);
+                //diagram.transform.Find("Button").GetComponent<Image>().color = new Color(1, 1, 1, 0.6f);
                 //diagram.gameObject.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0.6f);
                 Debug.Log("Not this one: " + diagram.gameObject.name);
             }
@@ -41,7 +41,7 @@ public class SystemPicker : MonoBehaviour
             {
                 diagram.color = new Color(1, 1, 1, 1);
                 diagram.GetComponentInParent<Canvas>().sortingOrder = 6;
-                diagram.transform.Find("Button").GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                //diagram.transform.Find("Button").GetComponent<Image>().color = new Color(1, 1, 1, 1);
                 //diagram.gameObject.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
                 Debug.Log("AYYYYYYYYYY: " + diagram.gameObject.name);
             }

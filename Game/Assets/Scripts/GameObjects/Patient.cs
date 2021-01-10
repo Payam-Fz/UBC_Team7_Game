@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class Patient : MonoBehaviour, IInteractive
 {
+    DialogueManager dialogueManager;
+
     public void Interact()
     {
-        throw new System.NotImplementedException();
+        dialogueManager.StartDialogue();
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        dialogueManager = GetComponent<DialogueManager>();
     }
 
     // Update is called once per frame

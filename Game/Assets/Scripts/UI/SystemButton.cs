@@ -4,41 +4,26 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SystemButton : MonoBehaviour, IPointerEnterHandler, ISelectHandler, IPointerExitHandler
+public class SystemButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    Image systemDiagram;
     Canvas systemCanvas;
-    Image buttonImage;
-    GameObject[] systemButtons;
-    Button button;
-    Button pressedButton;
+    GameObject[] systemDiagrams;
 
     private void Start()
     {
-        systemDiagram = GetComponentInParent<Image>();
         systemCanvas = GetComponentInParent<Canvas>();
-        buttonImage = GetComponent<Image>();
-        systemButtons = GetComponentInParent<SystemPicker>().bodySystems;
-        button = GetComponent<Button>();
+        systemDiagrams = GetComponentInParent<SystemPicker>().bodySystems;
     }
-
-    /*private void OnMouseOver()
-    {
-        systemDiagram.color = new Color(1, 1, 1, 0.2f);
-        systemCanvas.sortingOrder = 6;
-        buttonImage.color = new Color(1, 1, 1, 0.6f);
-    }*/
-
 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        foreach(var system in systemButtons)
+        foreach(var system in systemDiagrams)
         {
             if(system.name != transform.parent.name)
             {
                 system.GetComponent<Image>().color = new Color(1, 1, 1, 0.2f);
-                //system.transform.Find("Button").GetComponent<Image>().color = new Color(1, 1, 1, 0.6f);
+                system.GetComponent<Canvas>().sortingOrder = 5;
             }
             else
             {
@@ -51,29 +36,19 @@ public class SystemButton : MonoBehaviour, IPointerEnterHandler, ISelectHandler,
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(eventData.clickTime > 1f)
+        if(eventData.selectedObject != null)
         {
-
-        }
-        foreach (var system in systemButtons)
-        {
-            if (system.name != transform.parent.name && eventData.clickCount < 1)
+            foreach(var system in systemDiagrams)
             {
-                system.GetComponent<Image>().color = new Color(1, 1, 1, 1f);
-                //system.transform.Find("Button").GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                if(system != eventData.selectedObject.transform.parent)
+                {
+                    system.GetComponent<Image>().color = new Color(1, 1, 1, 0.2f);
+                    system.GetComponent<Canvas>().sortingOrder = 5;
+                }
             }
+            eventData.selectedObject.transform.parent.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            eventData.selectedObject.transform.parent.GetComponent<Canvas>().sortingOrder = 6;
         }
-        systemCanvas.sortingOrder = 5;
-
-        if(pressedButton!= null)
-        {
-            pressedButton.transform.parent.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-        }
-    }
-    public void OnSelect(BaseEventData eventData)
-    {
-        pressedButton = GetComponent<Button>();
-        Debug.Log(pressedButton.transform.parent.name + "was pressed!");
     }
 
 }

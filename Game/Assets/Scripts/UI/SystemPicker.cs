@@ -16,11 +16,6 @@ public class SystemPicker : MonoBehaviour
         {
             systemDiagrams.Add(system.GetComponent<Image>());
         }
-
-        /*foreach (var systemDiagram in systemDiagrams)
-        {
-            Debug.Log(systemDiagram.name);
-        }*/
     }
 
     public void SelectSystem()
@@ -33,17 +28,11 @@ public class SystemPicker : MonoBehaviour
             {
                 diagram.color = new Color(1, 1, 1, 0.2f);
                 diagram.GetComponentInParent<Canvas>().sortingOrder = 5;
-                //diagram.transform.Find("Button").GetComponent<Image>().color = new Color(1, 1, 1, 0.6f);
-                //diagram.gameObject.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0.6f);
-                Debug.Log("Not this one: " + diagram.gameObject.name);
             }
             else
             {
                 diagram.color = new Color(1, 1, 1, 1);
                 diagram.GetComponentInParent<Canvas>().sortingOrder = 6;
-                //diagram.transform.Find("Button").GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                //diagram.gameObject.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-                Debug.Log("AYYYYYYYYYY: " + diagram.gameObject.name);
             }
         }
 

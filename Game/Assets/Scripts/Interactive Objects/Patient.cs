@@ -6,23 +6,18 @@ public class Patient : MonoBehaviour, IInteractive
 {
     DialogueManager dialogueManager;
 
-    public void Interact()
-    {
-        dialogueManager.StartDialogue();
-    }
-
-
     // Start is called before the first frame update
     void Start()
     {
         dialogueManager = GetComponent<DialogueManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Interact()
     {
-        
+        dialogueManager.StartDialogue();
     }
+
+
     public void ManualHighlight()
     {
         throw new System.NotImplementedException();

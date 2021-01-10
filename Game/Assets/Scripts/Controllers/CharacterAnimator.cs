@@ -5,6 +5,9 @@ using UnityEngine;
 public class CharacterAnimator : MonoBehaviour
 {
     public float animationSpeed = 15f;
+    public int hairType = 1;
+    public int skinType = 1;
+    public int clothingType = 1;
 
     private float timer;
     private float animationDelay;
@@ -15,7 +18,6 @@ public class CharacterAnimator : MonoBehaviour
     private float horizontal;
     private float vertical;
 
-    // Start is called before the first frame update
     void Awake()
     {
         sprites = new Dictionary<string, Dictionary<string, Sprite[]>>();
@@ -48,19 +50,10 @@ public class CharacterAnimator : MonoBehaviour
 
         sprites.Add("Clothing", new Dictionary<string, Sprite[]>());
         LoadDirectionSprites("Clothing");
-        Debug.Log(sprites["Clothing"]["Right"][0].name);
-        Debug.Log(sprites["Clothing"]["Right"][1].name);
-        Debug.Log(sprites["Clothing"]["Right"][2].name);
     }
 
     private void LoadDirectionSprites(string piece)
     {
-        // temporary code
-        int hairType = 1;
-        int skinType = 1;
-        int clothingType = 1;
-        // till here
-
         string type = "";
         switch (piece)
         {
@@ -188,7 +181,6 @@ public class CharacterAnimator : MonoBehaviour
             {
                 direction += "Back";
             }
-
         }
         else if (horizontal == 0)
         {
@@ -204,7 +196,6 @@ public class CharacterAnimator : MonoBehaviour
             {
                 direction = "Standing";
             }
-
         }
         else
         {

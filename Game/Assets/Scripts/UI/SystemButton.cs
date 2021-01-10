@@ -18,7 +18,9 @@ public class SystemButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        foreach(var system in systemDiagrams)
+        StartCoroutine(GenericDelay());
+
+        foreach (var system in systemDiagrams)
         {
             if(system.name != transform.parent.name)
             {
@@ -36,6 +38,8 @@ public class SystemButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        StartCoroutine(GenericDelay());
+        
         if(eventData.selectedObject != null)
         {
             foreach(var system in systemDiagrams)
@@ -49,6 +53,11 @@ public class SystemButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             eventData.selectedObject.transform.parent.GetComponent<Image>().color = new Color(1, 1, 1, 1);
             eventData.selectedObject.transform.parent.GetComponent<Canvas>().sortingOrder = 6;
         }
+    }
+
+    IEnumerator GenericDelay()
+    {
+        yield return new WaitForSeconds(0.3f);
     }
 
 }

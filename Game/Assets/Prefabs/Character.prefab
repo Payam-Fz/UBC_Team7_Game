@@ -102,6 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationSpeed: 100
+  hairType: 1
+  skinType: 1
+  clothingType: 1
 --- !u!114 &6721041048534652321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +189,7 @@ SpriteRenderer:
   m_SortingLayerID: -248383075
   m_SortingLayer: 1
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: b844bbe8e1a04144ab2cc5d6e67e54a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f10c8812c0e70b74397d48514396a656, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

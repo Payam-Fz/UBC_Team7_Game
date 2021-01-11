@@ -59,5 +59,4 @@ public class SystemButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         yield return new WaitForSeconds(0.3f);
     }
-
 }

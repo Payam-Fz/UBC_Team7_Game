@@ -8,6 +8,8 @@ public class TV : MonoBehaviour, IInteractive
     [SerializeField] Sprite tvOn;
     [SerializeField] Sprite tvOff;
 
+    [SerializeField] GameObject tempNPC;
+
     
     void Start()
     {
@@ -19,6 +21,7 @@ public class TV : MonoBehaviour, IInteractive
         if(tvSprite.sprite == tvOff)
         {
             tvSprite.sprite = tvOn;
+            tempNPC.transform.localScale = new Vector3(1, 1, 1);
         } 
         else if(tvSprite.sprite == tvOn)
         {

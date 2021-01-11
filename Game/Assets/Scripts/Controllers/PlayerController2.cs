@@ -9,12 +9,14 @@ public class PlayerController2 : MonoBehaviour
     private Vector3 moveDirection;
     private Rigidbody2D playerRigidBody;
     private CharacterAnimator animator;
+    private CapsuleCollider2D playerCollider;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<CharacterAnimator>();
+        playerCollider = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame

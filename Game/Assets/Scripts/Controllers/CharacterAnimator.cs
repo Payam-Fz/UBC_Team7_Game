@@ -124,7 +124,7 @@ public class CharacterAnimator : MonoBehaviour
             direction = direction.Replace("Left", "Right");
         }
 
-        for (int i = 0; i < gameObject.transform.childCount; i++)
+        for (int i = 0; i < gameObject.transform.childCount-1; i++)
         {
             var piece = gameObject.transform.GetChild(i);
             string pieceName = piece.transform.name;

@@ -22,13 +22,14 @@ public class CharacterAnimator : MonoBehaviour
     {
         sprites = new Dictionary<string, Dictionary<string, Sprite[]>>();
         FillDictionary();
-        previousDirection = "Standing";
+        previousDirection = "Front";
         previousMoveState = 0;
         secondPreviousMoveState = 0;
         horizontal = 0f;
         vertical = 0f;
         timer = 0f;
         animationDelay = 10f / animationSpeed;
+        UpdateFrame();
     }
 
     public void setDirection(float horizontal, float vertical)

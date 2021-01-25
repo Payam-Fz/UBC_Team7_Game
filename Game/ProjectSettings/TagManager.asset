@@ -38,21 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Ground
+  - name: Background
     uniqueID: 3562270101
-    locked: 0
-  - name: Behind Wall
-    uniqueID: 2798829419
-    locked: 0
-  - name: Wall
-    uniqueID: 3798404537
-    locked: 0
-  - name: Front Of Wall
-    uniqueID: 2041913491
     locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Character
-    uniqueID: 4046584221
     locked: 0

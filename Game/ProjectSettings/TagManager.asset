@@ -41,6 +41,15 @@ TagManager:
   - name: Ground
     uniqueID: 3562270101
     locked: 0
+  - name: Behind Wall
+    uniqueID: 2798829419
+    locked: 0
+  - name: Wall
+    uniqueID: 3798404537
+    locked: 0
+  - name: Front Of Wall
+    uniqueID: 2041913491
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

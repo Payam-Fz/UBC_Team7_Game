@@ -128,7 +128,6 @@ public class CharacterAnimator : MonoBehaviour
         {
             var piece = gameObject.transform.GetChild(i);
             string pieceName = piece.transform.name;
-            Debug.Log(pieceName);
 
             if (pieceName.Equals("Hair"))
             {

@@ -1,79 +1,18 @@
 using System;
-using System.Text;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.EventSystems;
 
 public class DiagnosisLogic : MonoBehaviour {
 
-    public static DiagnosisTreeNode tree =
-    new DiagnosisTreeNode("Start", "Start Diagnosis")
-    {
-    new DiagnosisTreeNode("Illness", "An Illness")
-    {
-      new DiagnosisTreeNode("Generalized", "In a general area of the body")
-      {
-        new DiagnosisTreeNode("Skin", "The Skin", true)
-        {
-            new DiagnosisTreeNode("Infection", "An infection"),
-            new DiagnosisTreeNode("Cancer", "A Cancer"),
-            new DiagnosisTreeNode("Genetic", "A genetically predisposed illness"),
-            new DiagnosisTreeNode("Induced", "An induced illness")
-        },
-        new DiagnosisTreeNode("Joint", "Joints", true)
-        {
-            new DiagnosisTreeNode("Infection", "An infection"),
-            new DiagnosisTreeNode("Cancer", "A Cancer"),
-            new DiagnosisTreeNode("Genetic", "A genetically predisposed illness"),
-            new DiagnosisTreeNode("Induced", "An induced illness")
-        },
-        new DiagnosisTreeNode("Nerve", "Parts of the nervous system", true)
-        {
-            new DiagnosisTreeNode("Infection", "An infection"),
-            new DiagnosisTreeNode("Cancer", "A Cancer"),
-            new DiagnosisTreeNode("Genetic", "A genetically predisposed illness"),
-            new DiagnosisTreeNode("Induced", "An induced illness")
-        }
-      },
-      new DiagnosisTreeNode("Localized", "In a certain part of the body", true)
-      {
-        new DiagnosisTreeNode("System Picker", "Shift to visual picker"),
-      },
-    },
-    new DiagnosisTreeNode("Injury", "An Injury")
-    {
-      new DiagnosisTreeNode("Burn", "A burn caused by external heat", true)
-      {
-        new DiagnosisTreeNode("First Degree", "These are mild compared to other burns, they cause pain and reddening to the outer layer of the skin"),
-        new DiagnosisTreeNode("Second Degree", "These affect the outer and lower layer of skin, causing pain, redness, swelling, and blistering"),
-        new DiagnosisTreeNode("Third Degree", "These go through the layers of skin and affect the deeper tissues, they can result in white or blackened, charred skin that may be numb")
-      },
-      new DiagnosisTreeNode("Fracture", "A broken bone or smth oof", true)
-      {
-          new DiagnosisTreeNode("Fracture", "Definitely a broken bone or smth")
-      },
-      new DiagnosisTreeNode("Soft Tissue Damage", "Damage to the soft tissue underneath the skin")
-      {
-          new DiagnosisTreeNode("Skin", "The outermost layer of the body", true)
-          {
-              new DiagnosisTreeNode("Laceration", "cut owie"),
-              new DiagnosisTreeNode("Perforation", "too many circles please stop"),
-              new DiagnosisTreeNode("Contusion", "this is contusing")
-          },
-          new DiagnosisTreeNode("Internal Organ", "Inside the body", true)
-          {
-              new DiagnosisTreeNode("System Picker", "Shift to System Picker")
-          }
-      }
-    },
-  };
-
     #region Variables
     [SerializeField]
     GameObject buttonPrefab;
+    [SerializeField] 
     RectTransform canvasTransform;
     [SerializeField]
     List<GameObject> buttons;
@@ -85,9 +24,9 @@ public class DiagnosisLogic : MonoBehaviour {
 
     private void Start()
     {
-        currentRoot = tree;
+        currentRoot = MainTree.tree;
         buttons = new List<GameObject>();
-        canvasTransform = GetComponentInParent<RectTransform>();
+        //canvasTransform = GetComponentInParent<RectTransform>();
         yPositions = GetButtonPositions();
 
         //currentChildren = tree.GetChildren();
@@ -99,7 +38,13 @@ public class DiagnosisLogic : MonoBehaviour {
 
     public void RecordButton()
     {
-        buttonPressed = EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text;
+        buttonPressed = EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TextMeshProUGUI>().text;
+        Debug.Log(buttonPressed);
+
+        if(buttonPressed == "Start")
+        {
+            buttonPressed = null;
+        }
 
         if (currentRoot.isFinal)
             Debug.Log(currentRoot.GetDiagnosis());
@@ -126,7 +71,7 @@ public class DiagnosisLogic : MonoBehaviour {
             var emptyButton = Instantiate(buttonPrefab, gameObject.transform);
             //buttonPrefab.GetComponent<RectTransform>().parent = gameObject.transform;
             //emptyButton.GetComponent<Button>().onClick.AddListener(() => CreateButtons());
-            emptyButton.GetComponentInChildren<Text>().text = child;
+            emptyButton.GetComponentInChildren<TextMeshProUGUI>().text = child;
             emptyButton.SetActive(true);
             //Debug.Log(child);
             buttons.Add(emptyButton);
@@ -147,6 +92,7 @@ public class DiagnosisLogic : MonoBehaviour {
         int children = currentRoot.GetChildren().Count();
         List<float> childrenYPos = new List<float>();
         float buttonSpacing = canvasTransform.rect.height / (children + 1);
+        Debug.Log(buttonSpacing);
 
         if (children%2 == 1)
         {
@@ -169,12 +115,17 @@ public class DiagnosisLogic : MonoBehaviour {
 
     void StoreButtons(List<GameObject> currentButtons)
     {
-        buttonRoots.Add(currentButtons);
+        if(!buttonRoots.Contains(currentButtons))
+        {
+            buttonRoots.Add(currentButtons);
+        }
     }
 
-    public static void TreeMethod()
+}
+    
+/*public static void TreeMethod()
     {
-        DiagnosisTreeNode currentNode = tree;
+        DiagnosisTreeNode currentNode = MainTree.tree;
 
         while (!currentNode.isFinal) 
         {
@@ -207,10 +158,9 @@ public class DiagnosisLogic : MonoBehaviour {
         Console.WriteLine("Your Diagnosis is: {0}", currentNode.GetDiagnosis());
     
   
-    }
-}
+    }*/
 
-    /*new DiagnosisTreeNode("C")
+/*new DiagnosisTreeNode("C")
     {
       new DiagnosisTreeNode("J", true)
       {
